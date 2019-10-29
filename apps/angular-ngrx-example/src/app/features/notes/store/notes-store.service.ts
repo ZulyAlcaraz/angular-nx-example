@@ -3,7 +3,7 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import * as fromNotes from '.';
-import { AddNote, DeleteNote, LoadNotes, EditNote } from './notes.actions';
+import { AddNote, DeleteNote, LoadNotes, EditNote, LoadNote } from './notes.actions';
 
 @Injectable({ providedIn: 'root' })
 export class NotesStoreService {
@@ -17,8 +17,12 @@ export class NotesStoreService {
         return this.store.pipe(select(fromNotes.getListSelector));
     }
 
-    getNote(id: string): Observable<fromNotes.Note> {
-        return this.store.pipe(select(fromNotes.getNoteSelector, id));
+    loadNote(id: string): void {
+        return this.store.dispatch(new LoadNote(id));
+    }
+
+    getNote(): Observable<fromNotes.Note> {
+        return this.store.pipe(select(fromNotes.getNoteSelector));
     }
 
     addNote(note: fromNotes.Note) {

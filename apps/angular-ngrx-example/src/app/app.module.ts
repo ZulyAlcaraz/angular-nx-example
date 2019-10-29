@@ -11,6 +11,7 @@ import { reducers, metaReducers } from './store';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { MaterialModule } from './material.module';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
     declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { MaterialModule } from './material.module';
                 }
             }
         ),
+        EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
         MaterialModule
     ],

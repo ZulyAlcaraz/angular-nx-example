@@ -5,6 +5,9 @@ export enum NoteActionTypes {
     LoadNotes = '[Note] Load Notes',
     LoadNotesSuccess = '[Note] LoadNotesSuccess',
     LoadNotesFailure = '[Note] LoadNotesFailure',
+    LoadNote = '[Note] Load Note',
+    LoadNoteSuccess = '[Note] LoadNoteSuccess',
+    LoadNoteFailure = '[Note] LoadNoteFailure',
     AddNote = '[Note] AddNote',
     DeleteNote = '[Note] DeleteNote',
     EditNote = '[Note] EditNote',
@@ -22,6 +25,20 @@ export class LoadNotesSuccess implements Action {
 
 export class LoadNotesFailure implements Action {
     readonly type = NoteActionTypes.LoadNotesFailure;
+}
+
+export class LoadNote implements Action {
+    readonly type = NoteActionTypes.LoadNote;
+    constructor(public id: string) {}
+}
+
+export class LoadNoteSuccess implements Action {
+    readonly type = NoteActionTypes.LoadNoteSuccess;
+    constructor(public payload: Note) {}
+}
+
+export class LoadNoteFailure implements Action {
+    readonly type = NoteActionTypes.LoadNoteFailure;
 }
 
 export class GetNote implements Action {
@@ -44,4 +61,4 @@ export class DeleteNote implements Action {
     constructor(public id: string) {}
 }
 
-export type NoteActions = LoadNotes | AddNote | DeleteNote | EditNote | GetNote | LoadNotesSuccess | LoadNotesFailure;
+export type NoteActions = AddNote | DeleteNote | EditNote | GetNote | LoadNotes | LoadNotesSuccess | LoadNotesFailure | LoadNote | LoadNoteSuccess | LoadNoteFailure;

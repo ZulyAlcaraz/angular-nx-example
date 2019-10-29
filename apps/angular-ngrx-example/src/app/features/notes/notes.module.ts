@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
@@ -22,6 +24,7 @@ import { NotesEffects } from './store/notes.effects';
         ColorsModule,
         StoreModule.forFeature(fromNote.noteFeatureKey, fromNote.reducer),
         EffectsModule.forFeature([NotesEffects]),
+        HttpClientModule
     ]
 })
 export class NotesModule { }

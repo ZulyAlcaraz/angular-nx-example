@@ -37,7 +37,8 @@ export class SaveComponent implements OnInit, OnDestroy {
             .subscribe(params => {
                 this.noteId = params.id;
                 if (this.noteId) {
-                    this.noteStoreService.getNote(this.noteId)
+                    this.noteStoreService.loadNote(this.noteId);
+                    this.noteStoreService.getNote()
                         .pipe(
                             takeUntil(this.ngUnsubscribe$),
                             filter(note => !!note)
