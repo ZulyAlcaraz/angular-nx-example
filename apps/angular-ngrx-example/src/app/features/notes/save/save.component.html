@@ -1,0 +1,19 @@
+<h2>Create Note</h2>
+<form [formGroup]="form" (ngSubmit)=onSubmit()>
+    <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" required>
+        <mat-error *ngIf="form.get('title').hasError('required')">Title is required</mat-error>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+        <mat-label>Content</mat-label>
+        <textarea matInput formControlName="content" required></textarea>
+        <mat-error *ngIf="form.get('content').hasError('required')">Content is required</mat-error>
+    </mat-form-field>
+    <angular-nx-example-colors formControlName="color"></angular-nx-example-colors>
+    <div class="full-width">
+        <button mat-raised-button color="primary" class="margin-right" [disabled]=form.invalid>Save</button>
+        <button mat-raised-button type="button" (click)=cancel()>Cancel</button>
+    </div>
+</form>
+

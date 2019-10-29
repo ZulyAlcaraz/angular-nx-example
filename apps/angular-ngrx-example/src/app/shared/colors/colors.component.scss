@@ -1,0 +1,10 @@
+.color-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    .mat-list-option {
+        flex: 1;
+        margin-bottom: 1rem;
+        margin-right: 1rem;
+    }
+}

@@ -1,0 +1,12 @@
+.main-menu {
+    padding: 0;
+    min-width: 16.25rem;
+    .mat-list-item {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+        color: rgba(0, 0, 0, 0.5);
+    }
+    .active {
+        background-color: rgba(0, 0, 0, 0.04);
+        color: rgba(0, 0, 0);
+    }
+}

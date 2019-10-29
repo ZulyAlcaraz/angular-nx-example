@@ -1,0 +1,21 @@
+<mat-toolbar>
+    <div class="spacer"></div>
+    <button mat-icon-button (click)=addNote()>
+        <mat-icon>add</mat-icon>
+    </button>
+</mat-toolbar>
+
+<mat-list class="list">
+    <mat-list-item class="item" [style.background]=note.color *ngFor="let note of list">
+        <mat-icon matListIcon>note</mat-icon>
+        <h3 matLine> {{ note.title }} </h3>
+        <p matLine>{{ note.content }}</p>
+        <button mat-icon-button (click)=editNote(note.id)>
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button (click)=deleteNote(note.id)>
+            <mat-icon>delete</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+</mat-list>

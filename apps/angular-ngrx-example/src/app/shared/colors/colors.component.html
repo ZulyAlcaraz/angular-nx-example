@@ -1,0 +1,7 @@
+<mat-selection-list #selectionList class="color-list" (selectionChange)=colorChange($event)>
+    <mat-list-option [style.background]=color
+        [value]=color
+        *ngFor="let color of colors">
+        {{ color }}
+    </mat-list-option>
+</mat-selection-list>
