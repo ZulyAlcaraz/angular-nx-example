@@ -13,12 +13,12 @@ export class NotesController {
     @Body('content') content: string,
     @Body('color') color: string
   ) {
-    const generatedId = await this.notesService.insertNote({
+    const result = await this.notesService.insertNote({
         title,
         content,
         color
     });
-    return { id: generatedId };
+    return result;
   }
 
     @Get()
@@ -29,18 +29,18 @@ export class NotesController {
 
     @Get(':id')
     async getNote(@Param('id') noteId: string) {
-      return this.notesService.getSingleNote(noteId);
+        return this.notesService.getSingleNote(noteId);
     }
 
     @Patch(':id')
     async updateNote(@Param('id') noteId: string, @Body() note: Note) {
-      await this.notesService.updateNote(noteId, note);
-      return null;
+        const result = await this.notesService.updateNote(noteId, note);
+        return result;
     }
 
     @Delete(':id')
     async removeNote(@Param('id') noteId: string) {
-        await this.notesService.deleteNote(noteId);
-        return null;
+        const result = await this.notesService.deleteNote(noteId);
+        return result;
     }
 }

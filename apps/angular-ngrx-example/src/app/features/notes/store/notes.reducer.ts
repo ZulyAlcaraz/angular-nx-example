@@ -28,14 +28,26 @@ export function reducer(state = initialState, action: NoteActions): State {
         case NoteActionTypes.AddNote:
             return {
                 ...state,
-                list: [...state.list, action.payload]
+                loading: true
             };
-        case NoteActionTypes.DeleteNote:
+        case NoteActionTypes.AddNoteSuccess:
             return {
                 ...state,
-                list: [...state.list.filter(i => i.id !== action.id)]
+                list: [...state.list, action.payload],
+                loading: false
+            };
+        case NoteActionTypes.AddNoteFailure:
+            return {
+                ...state,
+                loading: false,
+                error: true
             };
         case NoteActionTypes.EditNote:
+            return {
+                ...state,
+                loading: true
+            };
+        case NoteActionTypes.EditNoteSuccess:
             return {
                 ...state,
                 list: [
@@ -45,43 +57,64 @@ export function reducer(state = initialState, action: NoteActions): State {
                         }
                         return i;
                     })
-                ]
+                ],
+                loading: false
+            };
+        case NoteActionTypes.EditNoteFailure:
+            return {
+                ...state,
+                loading: false,
+                error: true
+            };
+        case NoteActionTypes.DeleteNote:
+            return {
+                ...state,
+                loading: true
+            };
+        case NoteActionTypes.DeleteNoteSuccess:
+            return {
+                ...state,
+                list: [...state.list.filter(i => i.id !== action.payload.id)],
+                loading: false
+            };
+        case NoteActionTypes.DeleteNoteFailure:
+            return {
+                ...state,
+                loading: false,
+                error: true
             };
         case NoteActionTypes.LoadNotes:
             return {
                 ...state,
                 loading: true
             };
-
         case NoteActionTypes.LoadNotesSuccess:
             return {
                 ...state,
                 list: [...action.payload],
                 loading: false
             };
-
         case NoteActionTypes.LoadNotesFailure:
             return {
                 ...state,
+                loading: false,
                 error: true
             };
-
         case NoteActionTypes.LoadNote:
             return {
                 ...state,
                 loading: true
             };
-
         case NoteActionTypes.LoadNoteSuccess:
             return {
                 ...state,
                 currentNote: {...action.payload},
                 loading: false
             };
-
         case NoteActionTypes.LoadNoteFailure:
             return {
                 ...state,
+                loading: false,
                 error: true
             };
         default:

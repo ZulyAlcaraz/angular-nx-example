@@ -11,7 +11,7 @@ export class NotesService {
     async insertNote(note) {
         const newNote = new this.noteModel(note);
         const result = await newNote.save();
-        return result.id as string;
+        return result as Note;
     }
 
     async fetchNotes() {
@@ -35,7 +35,8 @@ export class NotesService {
         if (note.color) {
             currentNote.color = note.color;
         }
-        currentNote.save();
+        const result = await currentNote.save();
+        return { id: result.id, title: result.title, content: result.content, color: result.color };
     }
 
     async deleteNote(noteId: string) {
@@ -43,6 +44,7 @@ export class NotesService {
         if (result.n === 0) {
             throw new NotFoundException('Could not find note.');
         }
+        return { id: noteId };
     }
 
     private async findNote(id: string): Promise<Note> {
