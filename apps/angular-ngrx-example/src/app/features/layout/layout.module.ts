@@ -16,4 +16,4 @@ import { MainMenuModule } from '../../shared/main-menu/main-menu.module';
         MainMenuModule
     ]
 })
-export class HomeModule { }
+export class LayoutModule { }

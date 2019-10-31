@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Message } from '@angular-nx-example/api-interfaces';
+import { Component, OnInit } from '@angular/core';
+import { SpinnerStoreService } from '@angular-nx-example/spinner';
 
 @Component({
-  selector: 'angular-nx-example-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'angular-nx-example-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  hello$ = this.http.get<Message>('/api/hello');
-  constructor(private http: HttpClient) {}
+export class AppComponent implements OnInit {
+    constructor(private readonly spinnerStore: SpinnerStoreService) {}
+    ngOnInit(): void {
+        // this.spinnerStore.showSpinner();
+    }
 }

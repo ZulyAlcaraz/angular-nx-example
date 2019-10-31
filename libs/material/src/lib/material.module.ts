@@ -39,6 +39,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NxModule } from '@nrwl/angular';
 
 const materialModules = [
     MatFormFieldModule,
@@ -87,7 +88,7 @@ export function scrollFactory(overlay: Overlay): () => CloseScrollStrategy {
 }
 
 @NgModule({
-    imports: [CommonModule, ...materialModules],
+    imports: [CommonModule, ...materialModules, NxModule.forRoot()],
     exports: [...materialModules],
     providers: [
         { provide: MAT_AUTOCOMPLETE_SCROLL_STRATEGY, useFactory: scrollFactory, deps: [Overlay] }

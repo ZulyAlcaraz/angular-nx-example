@@ -7,6 +7,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
 import { MaterialModule } from '@angular-nx-example/material';
+import { SpinnerModule } from '@angular-nx-example/spinner';
 
 import { AppComponent } from './app.component';
 import { reducers, metaReducers } from './store';
@@ -32,7 +33,8 @@ import { environment } from '../environments/environment';
         ),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
-        MaterialModule
+        MaterialModule,
+        SpinnerModule
     ],
     providers: [],
     bootstrap: [AppComponent]

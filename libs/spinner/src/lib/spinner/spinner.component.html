@@ -1,0 +1,6 @@
+<ng-content *ngIf="(loading | async) === false; else spinner"></ng-content>
+<ng-template #spinner>
+  <div class="spinner" fxLayout="row" fxLayoutAlign="center center">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>
