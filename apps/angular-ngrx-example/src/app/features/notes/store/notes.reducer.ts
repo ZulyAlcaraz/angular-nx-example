@@ -1,29 +1,26 @@
 import { NoteActions, NoteActionTypes } from './notes.actions';
+import { Note as NoteApi } from '@angular-nx-example/api-interfaces';
 
 export const noteFeatureKey = 'note';
 
-export interface Note {
-    id?: string;
-    title?: string;
-    content?: string;
-    color?: string;
+export interface Note extends NoteApi {
 }
 
-export interface State {
+export interface NoteState {
     list: Note[];
     currentNote: Note;
     loading: boolean;
     error: boolean;
 }
 
-export const initialState: State = {
+export const initialState: NoteState = {
     list: [],
     currentNote: null,
     loading: false,
     error: false
 };
 
-export function reducer(state = initialState, action: NoteActions): State {
+export function reducer(state = initialState, action: NoteActions): NoteState {
     switch (action.type) {
         case NoteActionTypes.AddNote:
             return {
@@ -122,5 +119,5 @@ export function reducer(state = initialState, action: NoteActions): State {
     }
 }
 
-export const getList = (state: State) => state.list;
-export const getNote =  (state: State) => state.currentNote;
+export const getList = (state: NoteState) => state.list;
+export const getNote =  (state: NoteState) => state.currentNote;

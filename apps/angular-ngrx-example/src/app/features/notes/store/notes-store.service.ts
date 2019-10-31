@@ -7,7 +7,7 @@ import { AddNote, DeleteNote, LoadNotes, EditNote, LoadNote } from './notes.acti
 
 @Injectable({ providedIn: 'root' })
 export class NotesStoreService {
-    constructor(private store: Store<fromNotes.State>) {}
+    constructor(private store: Store<fromNotes.NoteState>) {}
 
     loadNotes(): void {
         return this.store.dispatch(new LoadNotes());

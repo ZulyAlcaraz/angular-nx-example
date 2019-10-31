@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
+import { MaterialModule } from '@angular-nx-example/material';
 
 import * as fromNote from './store/notes.reducer';
 import { ListComponent } from './list/list.component';
 import { NotesRoutingModule } from './notes-routing.module';
-import { MaterialModule } from '../../material.module';
 import { ColorsModule } from '../../shared/colors/colors.module';
 import { SaveComponent } from './save/save.component';
 import { NotesEffects } from './store/notes.effects';

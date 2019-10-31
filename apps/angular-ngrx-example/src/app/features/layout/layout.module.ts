@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { HomeComponent } from './home.component';
-import { MaterialModule } from '../../material.module';
-import { HomeRoutingModule } from './home-routing.module'
+import { MaterialModule } from '@angular-nx-example/material';
+
+import { LayoutComponent } from './layout.component';
+import { LayoutRoutingModule } from './layout-routing.module'
 import { MainMenuModule } from '../../shared/main-menu/main-menu.module';
 
 @NgModule({
-    declarations: [HomeComponent],
+    declarations: [LayoutComponent],
     imports: [
         CommonModule,
-        HomeRoutingModule,
+        LayoutRoutingModule,
         MaterialModule,
         MainMenuModule
     ]

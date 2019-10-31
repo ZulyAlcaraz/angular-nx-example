@@ -9,7 +9,7 @@ import { LoadColors } from './colors.actions';
     providedIn: 'root'
 })
 export class ColorsStoreService {
-    constructor(private store: Store<fromColors.Colors>) {}
+    constructor(private store: Store<fromColors.ColorState>) {}
 
     getList(): Observable<string[]> {
         return this.store.pipe(select(fromColors.getListSelector));

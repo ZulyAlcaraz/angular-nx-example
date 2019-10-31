@@ -16,7 +16,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@angular-nx-example/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@angular-nx-example/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@angular-nx-example/ui": ["libs/ui/src/index.ts"],
+      "@angular-nx-example/spinner": ["libs/spinner/src/index.ts"],
+      "@angular-nx-example/material": ["libs/material/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'angular-nx-example-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './layout.component.html',
+  styleUrls: ['./layout.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class LayoutComponent implements OnInit {
 
   constructor() { }
 

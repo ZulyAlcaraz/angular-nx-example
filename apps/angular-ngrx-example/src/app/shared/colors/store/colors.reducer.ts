@@ -2,19 +2,19 @@ import { ColorsActionTypes, ColorsActions } from './colors.actions';
 
 export const colorsFeatureKey = 'colors';
 
-export interface Colors {
+export interface ColorState {
     colors: string[];
     loading: boolean;
     error: boolean;
 }
 
-export const initialState: Colors = {
+export const initialState: ColorState = {
     colors: [],
     loading: false,
     error: false
 };
 
-export function reducer(state = initialState, action: ColorsActions): Colors {
+export function reducer(state = initialState, action: ColorsActions): ColorState {
     switch (action.type) {
         case ColorsActionTypes.LoadColors:
             return {
@@ -39,4 +39,4 @@ export function reducer(state = initialState, action: ColorsActions): Colors {
     }
 }
 
-export const getList = (state: Colors) => state.colors;
+export const getList = (state: ColorState) => state.colors;

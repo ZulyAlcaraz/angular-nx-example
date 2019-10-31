@@ -1,8 +1,9 @@
-import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
+
+import { MaterialModule } from '@angular-nx-example/material';
 
 import { MainMenuComponent } from './main-menu.component';
-import { MaterialModule } from 'src/app/material.module';
 
 describe('MainMenuComponent', () => {
     let spectator: Spectator<MainMenuComponent>;

@@ -25,9 +25,7 @@
               "apps/angular-ngrx-example/src/favicon.ico",
               "apps/angular-ngrx-example/src/assets"
             ],
-            "styles": [
-              "apps/angular-ngrx-example/src/styles.scss"
-            ],
+            "styles": ["apps/angular-ngrx-example/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -87,10 +85,7 @@
               "apps/angular-ngrx-example/tsconfig.app.json",
               "apps/angular-ngrx-example/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/angular-ngrx-example/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/angular-ngrx-example/**"]
           }
         },
         "test": {
@@ -124,9 +119,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "apps/angular-ngrx-example-e2e/tsconfig.e2e.json"
-            ],
+            "tsConfig": ["apps/angular-ngrx-example-e2e/tsconfig.e2e.json"],
             "exclude": [
               "**/node_modules/**",
               "!apps/angular-ngrx-example-e2e/**"
@@ -148,9 +141,7 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": [
-              "apps/api/src/assets"
-            ]
+            "assets": ["apps/api/src/assets"]
           },
           "configurations": {
             "production": {
@@ -179,10 +170,7 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!apps/api/**"
-            ]
+            "exclude": ["**/node_modules/**", "!apps/api/**"]
           }
         },
         "test": {
@@ -207,10 +195,7 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/api-interfaces/**"
-            ]
+            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
           }
         },
         "test": {
@@ -219,6 +204,68 @@
             "jestConfig": "libs/api-interfaces/jest.config.js",
             "tsConfig": "libs/api-interfaces/tsconfig.spec.json"
           }
+        }
+      }
+    },
+    "spinner": {
+      "projectType": "library",
+      "root": "libs/spinner",
+      "sourceRoot": "libs/spinner/src",
+      "prefix": "angular-nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/spinner/tsconfig.lib.json",
+              "libs/spinner/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/spinner/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/spinner/jest.config.js",
+            "tsConfig": "libs/spinner/tsconfig.spec.json",
+            "setupFile": "libs/spinner/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
+        }
+      }
+    },
+    "material": {
+      "projectType": "library",
+      "root": "libs/material",
+      "sourceRoot": "libs/material/src",
+      "prefix": "angular-nx-example",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/material/tsconfig.lib.json",
+              "libs/material/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/material/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

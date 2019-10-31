@@ -19,6 +19,12 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "spinner": {
+      "tags": []
+    },
+    "material": {
+      "tags": []
     }
   }
 }

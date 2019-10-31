@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
+
+import { MaterialModule } from '@angular-nx-example/material';
 
 import { ColorsComponent } from './colors.component';
 import { ColorsEffects } from './store/colors.effects';
 import * as fromColors from './store/colors.reducer';
-import { MaterialModule } from '../../material.module';
 
 @NgModule({
     declarations: [ColorsComponent],

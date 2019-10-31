@@ -1,8 +1,9 @@
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 import { of } from 'rxjs';
 
+import { MaterialModule } from '@angular-nx-example/material';
+
 import { ColorsComponent } from './colors.component';
-import { MaterialModule } from 'src/app/material.module';
 import { ColorsStoreService } from './store/colors-store.service';
 
 describe('ColorsComponent', () => {
