@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Note } from '@angular-nx-example/api-interfaces';
-
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-
-import { map, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap, tap, finalize, delay } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-import { NoteActionTypes, NoteActions, LoadNotesSuccess, LoadNotesFailure, LoadNoteSuccess, LoadNoteFailure, AddNoteSuccess, AddNoteFailure, EditNoteSuccess, EditNoteFailure, DeleteNoteSuccess, DeleteNoteFailure } from './notes.actions';
+import { Note } from '@angular-nx-example/api-interfaces';
+import { SpinnerStoreService } from '@angular-nx-example/spinner';
+
+import { NoteActionTypes, NoteActions, LoadNotesSuccess, LoadNotesFailure,
+    LoadNoteSuccess, LoadNoteFailure, AddNoteSuccess, AddNoteFailure,
+    EditNoteSuccess, EditNoteFailure, DeleteNoteSuccess, DeleteNoteFailure
+} from './notes.actions';
+
 
 @Injectable()
 export class NotesEffects {
@@ -45,15 +49,19 @@ export class NotesEffects {
 
     constructor(
         private actions$: Actions<NoteActions>,
-        private http: HttpClient
+        private http: HttpClient,
+        private readonly spinnerStore: SpinnerStoreService
     ) {}
 
     getNotes(): Observable<Action> {
         return this.http
             .get<Note[]>('/api/notes')
             .pipe(
+                tap(() => this.spinnerStore.showSpinner()),
                 map(response => new LoadNotesSuccess(response)),
-                catchError(err => of(new LoadNotesFailure()))
+                catchError(err => of(new LoadNotesFailure())),
+                delay(1000),
+                finalize(() => this.spinnerStore.hideSpinner())
             );
     }
 
@@ -61,8 +69,11 @@ export class NotesEffects {
         return this.http
             .get<Note>(`/api/notes/${id}`)
             .pipe(
+                tap(() => this.spinnerStore.showSpinner()),
                 map(response => new LoadNoteSuccess(response)),
-                catchError(err => of(new LoadNoteFailure()))
+                catchError(err => of(new LoadNoteFailure())),
+                delay(1000),
+                finalize(() => this.spinnerStore.hideSpinner())
             );
     }
 
@@ -70,8 +81,11 @@ export class NotesEffects {
         return this.http
             .post<Note>(`/api/notes`, note)
             .pipe(
+                tap(() => this.spinnerStore.showSpinner()),
                 map(response => new AddNoteSuccess(response)),
-                catchError(err => of(new AddNoteFailure()))
+                catchError(err => of(new AddNoteFailure())),
+                delay(1000),
+                finalize(() => this.spinnerStore.hideSpinner())
             );
     }
 
@@ -79,8 +93,11 @@ export class NotesEffects {
         return this.http
             .patch<Note>(`/api/notes/${id}`, note)
             .pipe(
+                tap(() => this.spinnerStore.showSpinner()),
                 map(response => new EditNoteSuccess(response)),
-                catchError(err => of(new EditNoteFailure()))
+                catchError(err => of(new EditNoteFailure())),
+                delay(1000),
+                finalize(() => this.spinnerStore.hideSpinner())
             );
     }
 
@@ -88,8 +105,11 @@ export class NotesEffects {
         return this.http
             .delete<Note>(`/api/notes/${id}`)
             .pipe(
+                tap(() => this.spinnerStore.showSpinner()),
                 map(response => new DeleteNoteSuccess(response)),
-                catchError(err => of(new DeleteNoteFailure()))
+                catchError(err => of(new DeleteNoteFailure())),
+                delay(1000),
+                finalize(() => this.spinnerStore.hideSpinner())
             );
     }
 }

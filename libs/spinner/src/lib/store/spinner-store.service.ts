@@ -13,12 +13,11 @@ export class SpinnerStoreService {
 
     constructor(private store: Store<SpinnerState>) { }
 
-    showSpinner() {
-        console.log('service store Show');
+    showSpinner(): void {
         this.store.dispatch(new ShowSpinner());
     }
 
-    hideSpinner() {
+    hideSpinner(): void {
         this.store.dispatch(new HideSpinner());
     }
 

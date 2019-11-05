@@ -3,7 +3,8 @@ import { Effect, ofType, Actions } from '@ngrx/effects';
 import { HttpClient } from '@angular/common/http';
 import { Action } from '@ngrx/store';
 import { of, Observable } from 'rxjs';
-import { map, switchMap, catchError } from 'rxjs/operators';
+import { map, switchMap, catchError} from 'rxjs/operators';
+
 
 import {
     ColorsActionTypes,
@@ -14,12 +15,15 @@ import {
 
 @Injectable()
 export class ColorsEffects {
-    constructor(private actions$: Actions, private readonly http: HttpClient) {}
+    constructor(
+        private actions$: Actions,
+        private readonly http: HttpClient
+    ) {}
 
     @Effect()
     loadColors$ = this.actions$.pipe(
         ofType<LoadColors>(ColorsActionTypes.LoadColors),
-        switchMap(() => this.getColors())
+        switchMap(() => this.getColors()),
     );
 
     getColors(): Observable<Action> {
@@ -30,7 +34,7 @@ export class ColorsEffects {
                     response.colors.filter(i => !!i.hex).map(i => `#${i.hex}`)
                 ),
                 map(colors => new LoadColorsSuccess(colors)),
-                catchError(err => of(new LoadColorsFailure()))
+                catchError(err => of(new LoadColorsFailure())),
             );
     }
 }

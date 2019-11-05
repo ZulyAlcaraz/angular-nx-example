@@ -16,6 +16,6 @@ export class SpinnerComponent implements OnInit {
     constructor(private readonly spinnerStoreService: SpinnerStoreService) { }
 
     ngOnInit(): void {
-        this.loading = this.spinnerStoreService.getSpinnerValue().pipe(tap(value => console.log(value)));
+        this.loading = this.spinnerStoreService.getSpinnerValue();
     }
 }

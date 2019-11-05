@@ -10,14 +10,13 @@ import { MaterialModule } from '@angular-nx-example/material';
 
 import { SpinnerComponent } from './spinner/spinner.component';
 import * as fromSpinner from './store/spinner.reducer';
-import { SpinnerEffects } from './store/spinner.effects';
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
     NxModule.forRoot(),
-    EffectsModule.forRoot([SpinnerEffects]),
+    EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
     StoreModule.forFeature(fromSpinner.SPINNER_FEATURE_KEY, fromSpinner.reducer),
     FlexLayoutModule
