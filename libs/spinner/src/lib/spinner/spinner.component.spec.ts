@@ -1,25 +1,22 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
+import { MatProgressSpinnerModule } from '@angular/material';
 
 import { SpinnerComponent } from './spinner.component';
+import { SpinnerStoreService } from '../store/spinner-store.service';
 
 describe('SpinnerComponent', () => {
-  let component: SpinnerComponent;
-  let fixture: ComponentFixture<SpinnerComponent>;
+    let spectator: Spectator<SpinnerComponent>;
+    const createComponent = createComponentFactory({
+        component: SpinnerComponent,
+        mocks: [SpinnerStoreService],
+        imports: [
+            MatProgressSpinnerModule
+        ]
+    });
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SpinnerComponent ]
-    })
-    .compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SpinnerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(() => (spectator = createComponent()));
+  
+    it('should create', () => {
+        expect(spectator.component).toBeTruthy();
+    });
 });

@@ -1,12 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { createServiceFactory } from '@ngneat/spectator/jest';
+import { Store } from '@ngrx/store';
 
 import { SpinnerStoreService } from './spinner-store.service';
 
 describe('SpinnerStoreService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+    const spectator = createServiceFactory<SpinnerStoreService>({
+        service: SpinnerStoreService,
+        mocks: [ Store ]
+    });
 
-  it('should be created', () => {
-    const service: SpinnerStoreService = TestBed.get(SpinnerStoreService);
-    expect(service).toBeTruthy();
-  });
+    it('should be created', () => {
+        expect(spectator).toBeTruthy();
+    });
 });

@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { MockComponent } from 'ng-mocks';
+
+import { SpinnerComponent } from '@angular-nx-example/spinner';
+
 import { AppComponent } from './app.component';
 
-describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      imports: [HttpClientModule]
-    }).compileComponents();
-  }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+describe('AppComponent', () => {
+    let spectator: Spectator<AppComponent>;
+    const createComponent = createComponentFactory({
+        component: AppComponent,
+        imports: [
+            RouterTestingModule,
+            HttpClientTestingModule
+        ],
+        declarations: [MockComponent(SpinnerComponent)]
+    });
+
+    beforeEach(() => (spectator = createComponent()));
+
+    it('should create the app', () => {
+        expect(spectator.component).toBeTruthy();
+    });
 });

@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Spectator, createComponentFactory } from '@ngneat/spectator/jest';
+import { MatToolbarModule, MatSidenavModule } from '@angular/material';
 
 import { LayoutComponent } from './layout.component';
+import { MainMenuModule } from '../../shared/main-menu/main-menu.module';
 
 describe('LayoutComponent', () => {
-  let component: LayoutComponent;
-  let fixture: ComponentFixture<LayoutComponent>;
+    let spectator: Spectator<LayoutComponent>;
+    const createComponent = createComponentFactory({
+        component: LayoutComponent,
+        imports: [
+            RouterTestingModule,
+            MatToolbarModule,
+            MatSidenavModule,
+            MainMenuModule
+        ],
+    });
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ LayoutComponent ]
-    })
-    .compileComponents();
-  }));
+    beforeEach(() => (spectator = createComponent()));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(spectator.component).toBeTruthy();
+    });
 });

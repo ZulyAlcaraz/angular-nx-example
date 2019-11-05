@@ -59,11 +59,14 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.3",
-    "@angular/cli": "8.3.3",
+    "@angular/cli": "^8.3.17",
     "@angular/compiler-cli": "^8.2.0",
     "@angular/language-service": "^8.2.0",
     "@nestjs/schematics": "^6.7.0",
     "@nestjs/testing": "^6.8.3",
+    "@ngneat/spectator": "^4.5.0",
+    "@ngrx/schematics": "8.3.0",
+    "@ngrx/store-devtools": "8.3.0",
     "@nrwl/cypress": "8.7.0",
     "@nrwl/jest": "8.7.0",
     "@nrwl/nest": "8.7.0",
@@ -78,12 +81,11 @@
     "eslint": "6.1.0",
     "jest": "24.1.0",
     "jest-preset-angular": "7.0.0",
+    "ng-mocks": "^8.1.0",
     "prettier": "1.18.2",
     "ts-jest": "24.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.5",
-    "@ngrx/schematics": "8.3.0",
-    "@ngrx/store-devtools": "8.3.0"
+    "typescript": "~3.4.5"
   }
 }

@@ -1,4 +1,4 @@
-import { createServiceFactory } from '@ngneat/spectator';
+import { createServiceFactory } from '@ngneat/spectator/jest';
 import { provideMockStore } from '@ngrx/store/testing';
 
 import * as fromColors from '.';
